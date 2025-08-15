@@ -1,18 +1,19 @@
 package motloung.koena.analyticsapp
 
 import android.os.Bundle
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import motloung.koena.analyticsapp.databinding.ActivityAnalyticsBinding
 
 class AnalyticsActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityAnalyticsBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_analytics)
-
-
+        binding = ActivityAnalyticsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val summary = intent.getStringExtra("summary")
-        findViewById<TextView>(R.id.summaryTextView).text = summary
+        binding.summaryTextView.text =
+            "This is the Analytics App you have opened.\n\n\n$summary"
     }
 }

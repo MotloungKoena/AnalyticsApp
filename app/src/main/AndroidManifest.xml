@@ -7,7 +7,21 @@
 
     <uses-permission android:name="com.example.permission.RECEIVE_BUDGET_REMINDER" />
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+    <uses-permission android:name="com.example.permission.ACCESS_FINANCE_SERVICE" />
+
+    <uses-permission android:name="com.example.permission.READ_FINANCE_DATA" />
+
+
+    <queries>
+        <!-- By package name -->
+        <package android:name="motloung.koena.financeapp"/>
+        <!-- And/or by intent action -->
+        <intent>
+            <action android:name="motloung.koena.financeapp.ACTION_SUMMARY_SERVICE" />
+        </intent>
+    </queries>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -19,8 +33,37 @@
         android:theme="@style/Theme.AnalyticsApp"
         tools:targetApi="31">
 
-         <activity
-            android:name=".MainActivity"
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <receiver
+            android:name=".ipc.BudgetReminderReceiver"
+            android:exported="true"
+            android:permission="com.example.permission.RECEIVE_BUDGET_REMINDER">
+            <intent-filter>
+                <action android:name="com.example.ACTION_BUDGET_REMINDER" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".AnalyticsActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="motloung.koena.analyticsapp.VIEW_ANALYTICS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.SplashActivity"
+            android:theme="@style/Theme.AnalyticsApp.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,10 +71,11 @@
             </intent-filter>
         </activity>
 
-         <activity
-            android:name=".AnalyticsActivity"
-            android:exported="true"
-            android:permission="com.example.permission.VIEW_ANALYTICS" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true" />
+
+
 
     </application>
 

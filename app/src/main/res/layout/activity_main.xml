@@ -1,20 +1,67 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="0dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
+
+    <!-- App name toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+        app:title="AnalyticsApp"
+        app:titleCentered="true" />
 
     <TextView
-        android:id="@+id/txtBroadcastMessage"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtEmpty"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Waiting for budget message..."
-        android:textSize="18sp"
+        android:gravity="center"
         android:padding="16dp"
-        android:layout_gravity="center_horizontal"
-        tools:ignore="MissingConstraints" />
+        android:text="No events found"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnShare"
+        android:text="Export / Share"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnOpenFinance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Open Finance (explicit)" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFetchFinanceSummary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fetch Finance Summary (Service)"
+        android:layout_marginTop="8dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnQueryFinanceProvider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Query Finance Provider" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnClear"
+        android:text="Clear History"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

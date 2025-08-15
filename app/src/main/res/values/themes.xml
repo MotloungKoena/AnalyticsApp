@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.AnalyticsApp" parent="Base.Theme.AnalyticsApp" />
+
+    <style name="Theme.AnalyticsApp.Splash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
 </resources>
