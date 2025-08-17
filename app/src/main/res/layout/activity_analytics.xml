@@ -25,6 +25,4 @@
             android:padding="16dp" />
     </com.google.android.material.card.MaterialCardView>
 
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

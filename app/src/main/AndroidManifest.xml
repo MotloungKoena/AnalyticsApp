@@ -15,9 +15,7 @@
 
 
     <queries>
-        <!-- By package name -->
         <package android:name="motloung.koena.financeapp"/>
-        <!-- And/or by intent action -->
         <intent>
             <action android:name="motloung.koena.financeapp.ACTION_SUMMARY_SERVICE" />
         </intent>
@@ -74,9 +72,5 @@
         <activity
             android:name=".ui.MainActivity"
             android:exported="true" />
-
-
-
     </application>
-
 </manifest>
